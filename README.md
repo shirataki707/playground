@@ -1,0 +1,64 @@
+# Android Playground
+
+最新技術や気になった技術を試す Android アプリ。
+
+## Tech Stack
+
+- **Kotlin** 2.3 / **AGP** 9.0
+- **Jetpack Compose** + Material3
+- **Navigation3**（androidx.navigation3）
+- **Kotlin Serialization**
+
+## プロジェクト構成
+
+```
+playground/
+├── build-logic/          # Convention Plugins（Gradle ビルドロジック集約）
+│   └── convention/
+│       └── src/main/kotlin/
+│           ├── AndroidApplicationComposeConventionPlugin.kt
+│           ├── AndroidLibraryConventionPlugin.kt
+│           └── AndroidLibraryComposeConventionPlugin.kt
+├── app/                  # アプリモジュール
+├── config/detekt/        # detekt 設定
+└── gradle/
+    └── libs.versions.toml  # バージョンカタログ
+```
+
+### 予定するモジュール構成
+
+```
+:app
+:module:core
+:module:feature:<name>
+```
+
+## Convention Plugins
+
+新しいモジュールを追加するときは `build.gradle.kts` に1行書くだけで、SDK バージョン・Kotlin・ktlint の基本設定が揃う。
+
+```kotlin
+// Android アプリ（Compose あり）
+plugins { id("playground.android.application.compose") }
+
+// Android ライブラリ（Compose なし）
+plugins { id("playground.android.library") }
+
+// Android ライブラリ（Compose あり）
+plugins { id("playground.android.library.compose") }
+```
+
+## Code Quality
+
+| ツール | 用途 | 設定ファイル |
+|---|---|---|
+| **detekt** | 静的解析・コードスメル検出 | `config/detekt/detekt.yml` |
+| **ktlint** | フォーマット統一 | `.editorconfig` |
+
+```bash
+./gradlew detekt              # 静的解析
+./gradlew :app:ktlintCheck    # フォーマットチェック
+./gradlew :app:ktlintFormat   # 自動フォーマット
+```
+
+Claude の Stop hook により、コーディング終了時に変更した `.kt` ファイルへ ktlint + detekt が自動実行される（約2秒）。
