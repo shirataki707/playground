@@ -18,24 +18,28 @@ playground/
 │       └── src/main/kotlin/
 │           ├── AndroidApplicationComposeConventionPlugin.kt
 │           ├── AndroidLibraryConventionPlugin.kt
-│           └── AndroidLibraryComposeConventionPlugin.kt
+│           ├── AndroidLibraryComposeConventionPlugin.kt
+│           └── DetektConventionPlugin.kt
 ├── app/                  # アプリモジュール
+├── feature/
+│   └── xr/               # XR 関連 UI
 ├── config/detekt/        # detekt 設定
 └── gradle/
     └── libs.versions.toml  # バージョンカタログ
 ```
 
-### 予定するモジュール構成
+### モジュール構成
 
 ```
-:app
-:module:core
-:module:feature:<name>
+:app              # アプリモジュール（唯一のエントリポイント）
+:core             # （予定）共有ロジック・データ層
+:feature:xr       # XR 関連 UI
+:feature:<name>   # 各技術領域の機能モジュール
 ```
 
 ## Convention Plugins
 
-新しいモジュールを追加するときは `build.gradle.kts` に1行書くだけで、SDK バージョン・Kotlin・ktlint の基本設定が揃う。
+新しいモジュールを追加するときは `build.gradle.kts` に1行書くだけで、SDK バージョン・Kotlin・ktlint・detekt の基本設定が揃う。
 
 ```kotlin
 // Android アプリ（Compose あり）
@@ -56,9 +60,9 @@ plugins { id("playground.android.library.compose") }
 | **ktlint** | フォーマット統一 | `.editorconfig` |
 
 ```bash
-./gradlew detekt              # 静的解析
-./gradlew :app:ktlintCheck    # フォーマットチェック
-./gradlew :app:ktlintFormat   # 自動フォーマット
+./gradlew detekt       # 全モジュール静的解析
+./gradlew ktlintCheck  # 全モジュールフォーマットチェック
+./gradlew ktlintFormat # 全モジュール自動フォーマット
 ```
 
 Claude の Stop hook により、コーディング終了時に変更した `.kt` ファイルへ ktlint + detekt が自動実行される（約2秒）。
