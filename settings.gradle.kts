@@ -32,3 +32,9 @@ plugins {
 
 rootProject.name = "playground"
 include(":app")
+
+file("feature")
+    .takeIf { it.isDirectory }
+    ?.listFiles { f -> f.isDirectory && f.resolve("build.gradle.kts").exists() }
+    ?.sortedBy { it.name }
+    ?.forEach { include(":feature:${it.name}") }

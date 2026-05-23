@@ -42,4 +42,9 @@ dependencies {
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+
+    rootProject.subprojects
+        .filter { it.path.startsWith(":feature:") }
+        .sortedBy { it.path }
+        .forEach { implementation(project(it.path)) }
 }
