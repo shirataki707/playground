@@ -12,11 +12,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
 
             val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
             dependencies {
-                add("implementation", platform(libs.findLibrary("androidx-compose-bom").get()))
-                add("implementation", libs.findLibrary("androidx-compose-ui").get())
-                add("implementation", libs.findLibrary("androidx-compose-ui-tooling-preview").get())
-                add("implementation", libs.findLibrary("androidx-compose-material3").get())
-                add("debugImplementation", libs.findLibrary("androidx-compose-ui-tooling").get())
                 add("implementation", libs.findLibrary("androidx-navigation3-runtime").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-navigation3").get())
                 add("implementation", project(":core:navigation"))
