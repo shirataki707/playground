@@ -44,7 +44,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.navigation3)
 
     rootProject.subprojects
-        .filter { it.path.startsWith(":feature:") }
+        .filter { (it.path.startsWith(":core:") || it.path.startsWith(":feature:")) && it.buildFile.exists() }
         .sortedBy { it.path }
         .forEach { implementation(project(it.path)) }
 }

@@ -19,10 +19,16 @@ playground/
 │           ├── AndroidApplicationComposeConventionPlugin.kt
 │           ├── AndroidLibraryConventionPlugin.kt
 │           ├── AndroidLibraryComposeConventionPlugin.kt
+│           ├── AndroidFeatureConventionPlugin.kt
+│           ├── AndroidFeatureContractConventionPlugin.kt
 │           └── DetektConventionPlugin.kt
 ├── app/                  # アプリモジュール
+├── core/
+│   └── navigation/       # NavigationState / Navigator
 ├── feature/
-│   └── xr/               # XR 関連 UI
+│   └── xr/
+│       ├── contract/     # XrKey（NavKey）
+│       └── ui/           # XrScreen / xrEntry
 ├── config/detekt/        # detekt 設定
 └── gradle/
     └── libs.versions.toml  # バージョンカタログ
@@ -31,10 +37,12 @@ playground/
 ### モジュール構成
 
 ```
-:app              # アプリモジュール（唯一のエントリポイント）
-:core             # （予定）共有ロジック・データ層
-:feature:xr       # XR 関連 UI
-:feature:<name>   # 各技術領域の機能モジュール
+:app                        # アプリモジュール（唯一のエントリポイント）
+:core:navigation            # NavigationState / Navigator
+:feature:xr:contract        # XrKey（NavKey）
+:feature:xr:ui              # XrScreen / xrEntry
+:feature:<name>:contract    # 各 feature の NavKey
+:feature:<name>:ui          # 各 feature の Screen / EntryProvider
 ```
 
 ## Convention Plugins
@@ -45,11 +53,15 @@ playground/
 // Android アプリ（Compose あり）
 plugins { id("playground.android.application.compose") }
 
-// Android ライブラリ（Compose なし）
+// Android ライブラリ（Compose なし / あり）
 plugins { id("playground.android.library") }
-
-// Android ライブラリ（Compose あり）
 plugins { id("playground.android.library.compose") }
+
+// Feature モジュール（UI層）: Compose・Navigation3・:core:navigation・全 contract を自動追加
+plugins { id("playground.android.feature") }
+
+// Feature モジュール（契約層）: NavKey 定義のみ。Navigation3-runtime + Serialization を追加
+plugins { id("playground.android.feature.contract") }
 ```
 
 ## Code Quality

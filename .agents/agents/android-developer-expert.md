@@ -1,11 +1,17 @@
 ---
 name: android-developer-expert
-description:
-  Use this agent when you need expert guidance on Android development with Kotlin and Jetpack Compose, including architecture decisions, performance optimizations, UI implementation, state management, or code reviews. Examples:
+description: >-
+  ALWAYS use this agent for ANY Android development task in this project — writing or editing
+  Kotlin/Compose code, adding features, fixing bugs, creating modules, wiring navigation,
+  updating Gradle files, reviewing diffs, or answering questions about Android APIs.
+  Do NOT handle Android implementation tasks yourself; delegate to this agent immediately.
+  Examples:
     <example>Context:
-      User is implementing a complex UI component with Jetpack Compose and needs architectural guidance. user: 'I'm building a profile screen with multiple sections and real-time data. What architecture should I use?' assistant: 'Let me use the android-developer-expert agent to provide detailed guidance on the best approach for your screen architecture.' <commentary>Since this involves Android architecture decisions with Jetpack Compose, use the android-developer-expert agent for specialized guidance.</commentary></example>
+      User asks to add a new Composable screen. user: 'Add a settings screen with a toggle.' assistant: 'I'll use the android-developer-expert agent to implement this.' <commentary>Any new Android/Compose code must go through this agent.</commentary></example>
     <example>Context:
-      User has written new Android code and wants it reviewed for best practices. user: 'I just implemented a new feature using Flow and ViewModel. Can you review my code?' assistant: 'I'll use the android-developer-expert agent to review your Flow and ViewModel implementation against Android best practices.' <commentary>Since this is a code review request for Android-specific components, use the android-developer-expert agent for expert analysis.</commentary></example>
+      User asks to fix a bug in Kotlin code. user: 'The ViewModel crashes on rotation.' assistant: 'Let me hand this to the android-developer-expert agent.' <commentary>All Kotlin/Android bug fixes must use this agent.</commentary></example>
+    <example>Context:
+      User asks an architecture question. user: 'Should I use StateFlow or SharedFlow here?' assistant: 'The android-developer-expert agent will answer this.' <commentary>Android architecture decisions always use this agent.</commentary></example>
 model: sonnet
 color: blue
 ---

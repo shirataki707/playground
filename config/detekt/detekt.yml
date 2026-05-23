@@ -36,3 +36,6 @@ style:
     maxLineLength: 130
   ReturnCount:
     max: 3
+  UnusedPrivateMember:
+    ignoreAnnotated:
+      - 'Preview'
