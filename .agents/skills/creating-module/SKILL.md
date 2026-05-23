@@ -71,6 +71,8 @@ android {
 
 **`settings.gradle.kts` への追記は不要。** `feature/` 配下は自動スキャンで検出される。
 
+**`.gitignore` の追加も不要。** ルートの `.gitignore` が `build/` を全階層でカバーしている。
+
 ---
 
 ## Step 3: Gradle 検証
