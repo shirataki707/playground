@@ -22,6 +22,14 @@ gradlePlugin {
             id = "playground.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
+        register("androidFeature") {
+            id = "playground.android.feature"
+            implementationClass = "AndroidFeatureConventionPlugin"
+        }
+        register("androidFeatureContract") {
+            id = "playground.android.feature.contract"
+            implementationClass = "AndroidFeatureContractConventionPlugin"
+        }
         register("detekt") {
             id = "playground.detekt"
             implementationClass = "DetektConventionPlugin"
