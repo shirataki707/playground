@@ -11,6 +11,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("com.android.library")
                 apply("org.jlleitschuh.gradle.ktlint")
+                apply("playground.detekt")
             }
             configure<LibraryExtension> {
                 compileSdk = 36

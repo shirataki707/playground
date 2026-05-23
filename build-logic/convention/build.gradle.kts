@@ -5,6 +5,7 @@ plugins {
 dependencies {
     compileOnly(libs.android.gradlePlugin)
     compileOnly(libs.kotlin.gradlePlugin)
+    compileOnly(libs.detekt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -20,6 +21,10 @@ gradlePlugin {
         register("androidLibraryCompose") {
             id = "playground.android.library.compose"
             implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+        register("detekt") {
+            id = "playground.detekt"
+            implementationClass = "DetektConventionPlugin"
         }
     }
 }

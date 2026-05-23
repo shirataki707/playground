@@ -13,6 +13,7 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.plugin.compose")
                 apply("org.jetbrains.kotlin.plugin.serialization")
                 apply("org.jlleitschuh.gradle.ktlint")
+                apply("playground.detekt")
             }
             configure<ApplicationExtension> {
                 compileSdk = 36
