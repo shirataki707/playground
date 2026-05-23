@@ -1,6 +1,7 @@
 package jp.shirataki707.playground.ui.main
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -10,9 +11,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavKey
 import jp.shirataki707.playground.data.DefaultDataRepository
+import jp.shirataki707.playground.feature.xr.XrKey
 import jp.shirataki707.playground.theme.PlaygroundTheme
 
-@Suppress("UnusedParameter")
 @Composable
 fun MainScreen(
     onItemClick: (NavKey) -> Unit,
@@ -26,7 +27,11 @@ fun MainScreen(
         }
 
         is MainScreenUiState.Success -> {
-            MainScreen(data = (state as MainScreenUiState.Success).data, modifier = modifier)
+            MainScreen(
+                data = (state as MainScreenUiState.Success).data,
+                onXrClick = { onItemClick(XrKey) },
+                modifier = modifier,
+            )
         }
 
         is MainScreenUiState.Error -> {
@@ -38,9 +43,15 @@ fun MainScreen(
 @Composable
 internal fun MainScreen(
     data: List<String>,
+    onXrClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier) { data.forEach { Greeting(it) } }
+    Column(modifier) {
+        data.forEach { Greeting(it) }
+        Button(onClick = onXrClick) {
+            Text("Open XR")
+        }
+    }
 }
 
 @Composable
@@ -54,11 +65,11 @@ fun Greeting(
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
-    PlaygroundTheme { MainScreen(listOf("Android")) }
+    PlaygroundTheme { MainScreen(data = listOf("Android"), onXrClick = {}) }
 }
 
 @Preview(showBackground = true, widthDp = 340)
 @Composable
 fun MainScreenPortraitPreview() {
-    PlaygroundTheme { MainScreen(listOf("Android")) }
+    PlaygroundTheme { MainScreen(data = listOf("Android"), onXrClick = {}) }
 }

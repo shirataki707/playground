@@ -33,8 +33,19 @@ plugins {
 rootProject.name = "playground"
 include(":app")
 
-file("feature")
+file("core")
     .takeIf { it.isDirectory }
     ?.listFiles { f -> f.isDirectory && f.resolve("build.gradle.kts").exists() }
     ?.sortedBy { it.name }
-    ?.forEach { include(":feature:${it.name}") }
+    ?.forEach { include(":core:${it.name}") }
+
+file("feature")
+    .takeIf { it.isDirectory }
+    ?.listFiles()
+    ?.filter { it.isDirectory }
+    ?.sortedBy { it.name }
+    ?.forEach { featureDir ->
+        featureDir.listFiles { f -> f.isDirectory && f.resolve("build.gradle.kts").exists() }
+            ?.sortedBy { it.name }
+            ?.forEach { subDir -> include(":feature:${featureDir.name}:${subDir.name}") }
+    }
