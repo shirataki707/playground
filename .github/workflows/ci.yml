@@ -22,7 +22,7 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install Android SDK Platform 36
-        run: echo "y" | sdkmanager "platforms;android-36"
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36"
       - run: ./gradlew detekt
 
   ktlint:
@@ -36,7 +36,7 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install Android SDK Platform 36
-        run: echo "y" | sdkmanager "platforms;android-36"
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36"
       - run: ./gradlew ktlintCheck
 
   android-lint:
@@ -50,7 +50,7 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install Android SDK Platform 36
-        run: echo "y" | sdkmanager "platforms;android-36" "build-tools;36.0.0"
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.0.0"
       - run: ./gradlew lintDebug
 
   test:
@@ -64,7 +64,7 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install Android SDK Platform 36
-        run: echo "y" | sdkmanager "platforms;android-36"
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36"
       - run: ./gradlew testDebugUnitTest
 
   build:
@@ -78,5 +78,5 @@ jobs:
           distribution: 'temurin'
       - uses: gradle/actions/setup-gradle@v4
       - name: Install Android SDK Platform 36
-        run: echo "y" | sdkmanager "platforms;android-36" "build-tools;36.0.0"
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-36" "build-tools;36.0.0"
       - run: ./gradlew :app:assembleDebug
