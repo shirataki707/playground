@@ -1,6 +1,6 @@
 # 0005: Introduce :core:design-system Module
 
-- Status: Accepted — 2026-05-24
+- Status: Superseded by [0006: Slim Down to :core:theme](0006-slim-down-to-core-theme.md) — 2026-05-28
 - Date: 2026-05-24
 
 ## Context

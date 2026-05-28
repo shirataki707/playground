@@ -26,12 +26,14 @@
             <option value="$PROJECT_DIR$/build-logic" />
             <option value="$PROJECT_DIR$/build-logic/convention" />
             <option value="$PROJECT_DIR$/core" />
-            <option value="$PROJECT_DIR$/core/design-system" />
             <option value="$PROJECT_DIR$/core/navigation" />
+            <option value="$PROJECT_DIR$/core/theme" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/xr" />
             <option value="$PROJECT_DIR$/feature/xr/contract" />
+            <option value="$PROJECT_DIR$/feature/xr/contract/main" />
             <option value="$PROJECT_DIR$/feature/xr/ui" />
+            <option value="$PROJECT_DIR$/feature/xr/ui/main" />
           </set>
         </option>
       </GradleProjectSettings>

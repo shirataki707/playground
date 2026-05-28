@@ -14,10 +14,11 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
             dependencies {
                 add("implementation", libs.findLibrary("androidx-navigation3-runtime").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-navigation3").get())
+                add("implementation", libs.findLibrary("androidx-compose-material-icons-core").get())
                 add("implementation", project(":core:navigation"))
-                add("implementation", project(":core:design-system"))
-                target.rootProject.subprojects
-                    .filter { it.path.startsWith(":feature:") && it.path.endsWith(":contract") }
+                add("implementation", project(":core:theme"))
+                target.rootProject.allprojects
+                    .filter { it.path.startsWith(":feature:") && it.path.split(":").contains("contract") && it.buildFile.exists() }
                     .forEach { add("implementation", it) }
             }
         }
