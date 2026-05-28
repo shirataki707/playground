@@ -3,6 +3,7 @@ import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.get
 import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
 class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
@@ -32,7 +33,7 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
                     buildConfig = false
                     shaders = false
                 }
-                sourceSets["main"].java.setSrcDirs(listOf("src/main/kotlin"))
+                sourceSets["main"].java.directories.setFrom("src/main/kotlin")
                 packaging {
                     resources {
                         excludes += "/META-INF/{AL2.0,LGPL2.1}"
