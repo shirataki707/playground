@@ -5,4 +5,3 @@ plugins {
 android {
     namespace = "jp.shirataki707.playground.core.theme"
 }
-

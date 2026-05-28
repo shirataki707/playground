@@ -55,7 +55,7 @@ private fun XrScreen(screenState: XrScreenState, modifier: Modifier = Modifier) 
                     }
                 },
             )
-        }
+        },
     ) { paddingValues ->
         Box(
             contentAlignment = Alignment.Center,
@@ -67,41 +67,33 @@ private fun XrScreen(screenState: XrScreenState, modifier: Modifier = Modifier) 
         }
     }
     if (LocalSpatialCapabilities.current.isSpatialUiEnabled) {
-        SpatialLayout(
-            primaryContent = {
-                Surface(modifier = Modifier.fillMaxSize()) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        Text("Primary Content")
-                    }
-                }
-            },
-            firstSupportingContent = {
-                Surface(
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.size(300.dp)
-                    ) {
-                        Text("First Supporting Content")
-                    }
-                }
-            },
-            secondSupportingContent = {
-                Surface(
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize()
-                    ) {
-                        Text("Second Supporting Content")
-                    }
-                }
-            },
-        )
+        XrSpatialLayout()
     }
+}
+
+@Composable
+private fun XrSpatialLayout() {
+    SpatialLayout(
+        primaryContent = {
+            Surface(modifier = Modifier.fillMaxSize()) {
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                    Text("Primary Content")
+                }
+            }
+        },
+        firstSupportingContent = {
+            Surface(modifier = Modifier.fillMaxWidth()) {
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.size(300.dp)) {
+                    Text("First Supporting Content")
+                }
+            }
+        },
+        secondSupportingContent = {
+            Surface(modifier = Modifier.fillMaxWidth()) {
+                Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
+                    Text("Second Supporting Content")
+                }
+            }
+        },
+    )
 }
