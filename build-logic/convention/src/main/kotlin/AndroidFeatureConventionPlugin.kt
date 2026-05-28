@@ -17,8 +17,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx-compose-material-icons-core").get())
                 add("implementation", project(":core:navigation"))
                 add("implementation", project(":core:theme"))
-                target.rootProject.subprojects
-                    .filter { it.path.startsWith(":feature:") && it.path.split(":").contains("contract") }
+                target.rootProject.allprojects
+                    .filter { it.path.startsWith(":feature:") && it.path.split(":").contains("contract") && it.buildFile.exists() }
                     .forEach { add("implementation", it) }
             }
         }
