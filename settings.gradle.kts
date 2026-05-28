@@ -45,7 +45,17 @@ file("feature")
     ?.filter { it.isDirectory }
     ?.sortedBy { it.name }
     ?.forEach { featureDir ->
-        featureDir.listFiles { f -> f.isDirectory && f.resolve("build.gradle.kts").exists() }
+        featureDir.listFiles { f -> f.isDirectory }
             ?.sortedBy { it.name }
-            ?.forEach { subDir -> include(":feature:${featureDir.name}:${subDir.name}") }
+            ?.forEach { typeDir ->
+                if (typeDir.resolve("build.gradle.kts").exists()) {
+                    include(":feature:${featureDir.name}:${typeDir.name}")
+                } else {
+                    typeDir.listFiles { f -> f.isDirectory && f.resolve("build.gradle.kts").exists() }
+                        ?.sortedBy { it.name }
+                        ?.forEach { variantDir ->
+                            include(":feature:${featureDir.name}:${typeDir.name}:${variantDir.name}")
+                        }
+                }
+            }
     }

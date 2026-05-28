@@ -17,7 +17,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", project(":core:navigation"))
                 add("implementation", project(":core:design-system"))
                 target.rootProject.subprojects
-                    .filter { it.path.startsWith(":feature:") && it.path.endsWith(":contract") }
+                    .filter { it.path.startsWith(":feature:") && it.path.split(":").contains("contract") }
                     .forEach { add("implementation", it) }
             }
         }
