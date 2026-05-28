@@ -11,7 +11,7 @@ import androidx.navigation3.ui.NavDisplay
 import jp.shirataki707.playground.core.navigation.Navigator
 import jp.shirataki707.playground.core.navigation.rememberNavigationState
 import jp.shirataki707.playground.core.navigation.toEntries
-import jp.shirataki707.playground.feature.xr.xrEntry
+import jp.shirataki707.playground.feature.xr.navigation.xrEntry
 import jp.shirataki707.playground.ui.main.MainScreen
 
 @Composable
@@ -39,6 +39,6 @@ fun MainNavigation() {
 
     NavDisplay(
         entries = navState.toEntries(navEntryProvider),
-        onBack = { if (navState.currentKey != navState.startKey) navigator.goBack() },
+        onBack = { if (navState.currentKey != navState.startKey) navigator.navigateBack() },
     )
 }

@@ -19,13 +19,23 @@ import jp.shirataki707.playground.core.designsystem.theme.PlaygroundTheme
 fun PlaygroundTopAppBar(
     title: String,
     modifier: Modifier = Modifier,
-    navigationIcon: (@Composable () -> Unit)? = null,
+    showNavigationIcon: Boolean = false,
+    onNavigateBack: () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {},
 ) {
     TopAppBar(
         title = { Text(text = title) },
         modifier = modifier,
-        navigationIcon = navigationIcon ?: {},
+        navigationIcon = {
+            if (showNavigationIcon) {
+                IconButton(onClick = onNavigateBack) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Back",
+                    )
+                }
+            }
+        },
         actions = actions,
     )
 }
@@ -45,14 +55,8 @@ private fun TopAppBarWithNavPreview() {
     PlaygroundTheme {
         PlaygroundTopAppBar(
             title = "Detail Screen",
-            navigationIcon = {
-                IconButton(onClick = {}) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        contentDescription = "Back",
-                    )
-                }
-            },
+            showNavigationIcon = true,
+            onNavigateBack = {},
         )
     }
 }
