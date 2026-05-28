@@ -20,7 +20,7 @@ import androidx.xr.compose.subspace.layout.height
 import androidx.xr.compose.subspace.layout.padding
 import androidx.xr.compose.subspace.layout.transformingMovable
 import androidx.xr.compose.subspace.layout.width
-import jp.shirataki707.playground.core.designsystem.theme.PlaygroundTheme
+import jp.shirataki707.playground.core.theme.PlaygroundTheme
 import jp.shirataki707.playground.feature.xr.ui.component.XrTopAppBar
 import kotlinx.coroutines.launch
 

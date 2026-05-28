@@ -5,16 +5,21 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.xr.compose.platform.LocalSpatialCapabilities
 import androidx.xr.compose.platform.LocalSpatialConfiguration
-import jp.shirataki707.playground.core.designsystem.components.PlaygroundTopAppBar
 import jp.shirataki707.playground.core.navigation.Navigator
 import jp.shirataki707.playground.feature.xr.ui.component.ToggleSpaceModeButton
 import jp.shirataki707.playground.feature.xr.ui.layout.SpatialLayout
@@ -28,15 +33,22 @@ fun XrScreen(
     XrScreen(screenState = screenState, modifier = modifier)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun XrScreen(screenState: XrScreenState, modifier: Modifier = Modifier) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
-            PlaygroundTopAppBar(
-                title = "",
-                showNavigationIcon = true,
-                onNavigateBack = screenState.navigateBack,
+            TopAppBar(
+                title = {},
+                navigationIcon = {
+                    IconButton(onClick = screenState.navigateBack) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                        )
+                    }
+                },
                 actions = {
                     if (LocalSpatialConfiguration.current.hasXrSpatialFeature) {
                         ToggleSpaceModeButton()

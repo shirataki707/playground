@@ -1,4 +1,4 @@
-package jp.shirataki707.playground.core.designsystem.theme
+package jp.shirataki707.playground.core.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.unit.Dp

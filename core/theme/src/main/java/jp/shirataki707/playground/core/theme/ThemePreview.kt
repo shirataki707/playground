@@ -1,4 +1,4 @@
-package jp.shirataki707.playground.core.designsystem.theme
+package jp.shirataki707.playground.core.theme
 
 import android.content.res.Configuration
 import androidx.compose.foundation.background

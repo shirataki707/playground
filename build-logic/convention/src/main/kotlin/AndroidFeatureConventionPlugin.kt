@@ -15,7 +15,7 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 add("implementation", libs.findLibrary("androidx-navigation3-runtime").get())
                 add("implementation", libs.findLibrary("androidx-lifecycle-viewmodel-navigation3").get())
                 add("implementation", project(":core:navigation"))
-                add("implementation", project(":core:design-system"))
+                add("implementation", project(":core:theme"))
                 target.rootProject.subprojects
                     .filter { it.path.startsWith(":feature:") && it.path.split(":").contains("contract") }
                     .forEach { add("implementation", it) }

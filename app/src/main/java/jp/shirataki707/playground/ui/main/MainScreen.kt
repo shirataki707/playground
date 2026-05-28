@@ -10,7 +10,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation3.runtime.NavKey
-import jp.shirataki707.playground.core.designsystem.theme.PlaygroundTheme
+import jp.shirataki707.playground.core.theme.PlaygroundTheme
 import jp.shirataki707.playground.data.DefaultDataRepository
 import jp.shirataki707.playground.feature.xr.XrKey
 
