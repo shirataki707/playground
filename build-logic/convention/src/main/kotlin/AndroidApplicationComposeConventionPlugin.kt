@@ -32,6 +32,7 @@ class AndroidApplicationComposeConventionPlugin : Plugin<Project> {
                     buildConfig = false
                     shaders = false
                 }
+                sourceSets["main"].java.setSrcDirs(listOf("src/main/kotlin"))
                 packaging {
                     resources {
                         excludes += "/META-INF/{AL2.0,LGPL2.1}"

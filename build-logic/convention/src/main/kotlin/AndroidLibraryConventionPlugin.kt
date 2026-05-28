@@ -26,6 +26,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 buildFeatures {
                     buildConfig = false
                 }
+                sourceSets["main"].java.setSrcDirs(listOf("src/main/kotlin"))
             }
             configure<KotlinAndroidProjectExtension> {
                 jvmToolchain(17)
